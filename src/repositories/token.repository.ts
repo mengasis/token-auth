@@ -1,5 +1,5 @@
 import type { Database } from '../config/db';
-import type { Token } from '../models/user.model';
+import type { Token } from '../models/token.model';
 
 export class TokenRepository {
   private db: Database;

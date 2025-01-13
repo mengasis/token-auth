@@ -13,7 +13,7 @@ import {
   generateRefreshToken,
   verifyRefreshToken,
 } from '../utils/jwt';
-import type { Token } from '../models/user.model';
+import type { Token } from '../models/token.model';
 
 export class AuthService {
   private userRepository: UserRepository;
