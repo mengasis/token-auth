@@ -14,6 +14,10 @@ export class UserRepository {
   }
 
   async findByUsername(username: string) {
-    return this.db.data.users.find((user) => user.username === username);
+    return this.db.data.users?.find((user) => user.username === username);
+  }
+
+  async findById(userId: string) {
+    return this.db.data.users.find((user) => user.id === userId);
   }
 }
