@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import { BaseException } from './exceptions';
+import { logger } from './logger';
 
 export function errorHandler(
   err: unknown,
@@ -18,7 +19,7 @@ export function errorHandler(
 
     res.status(err.statusCode).json(response);
   } else {
-    console.error(err);
+    logger.error(`${err}`);
     res.status(500).json({ error: 'Internal server error' });
   }
 }

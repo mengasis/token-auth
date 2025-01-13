@@ -8,5 +8,5 @@ export const comparePassword = async (
   password: string,
   hashedPasswords: string,
 ): Promise<boolean> => {
-  return bcrypt.compare(hashedPasswords, password);
+  return bcrypt.compare(password, hashedPasswords);
 };

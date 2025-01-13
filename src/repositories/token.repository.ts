@@ -10,6 +10,7 @@ export class TokenRepository {
 
   async create(token: Token): Promise<void> {
     this.db.data.tokens.push(token);
+    await this.db.write();
   }
 
   async findByRefreshToken(refreshToken: string): Promise<Token | undefined> {
@@ -20,7 +21,8 @@ export class TokenRepository {
 
   async deleteByRefreshToken(refreshToken: string): Promise<void> {
     this.db.data.tokens = this.db.data.tokens.filter(
-      (token) => token.refreshToken === refreshToken,
+      (token) => token.refreshToken !== refreshToken,
     );
+    await this.db.write();
   }
 }

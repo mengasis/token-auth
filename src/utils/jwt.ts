@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } from '../config/env';
+import { InternalServerErrorException } from './exceptions';
+import { logger } from './logger';
 
 export function generateAccessToken(userId: string): string {
   const payload = { id: userId };
@@ -14,9 +16,19 @@ export function generateRefreshToken(userId: string): string {
 }
 
 export function verifyAccessToken<T>(token: string): T {
-  return jwt.verify(token, ACCESS_TOKEN_SECRET) as T;
+  try {
+    return jwt.verify(token, ACCESS_TOKEN_SECRET) as T;
+  } catch (error) {
+    logger.error(`${error}`)
+    throw new InternalServerErrorException('Error verifying access token');
+  }
 }
 
 export function verifyRefreshToken<T>(token: string): T {
-  return jwt.verify(token, REFRESH_TOKEN_SECRET) as T;
+  try {
+    return jwt.verify(token, REFRESH_TOKEN_SECRET) as T;
+  } catch (error) {
+    logger.error(`${error}`)
+    throw new InternalServerErrorException('Error verifying refresh token');
+  }
 }

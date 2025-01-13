@@ -1,11 +1,12 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 import corsConfig from './config/corsConfig';
 import authRoutes from './routes/authRoutes';
 import { errorHandler } from './utils/errorHandler';
 const app = express();
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -16,7 +17,7 @@ app.get('/health', (_, res) => {
 });
 
 app.use('/auth', authRoutes);
-
 app.use(errorHandler);
+
 
 export default app;
