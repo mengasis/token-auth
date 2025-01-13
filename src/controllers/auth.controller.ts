@@ -70,11 +70,7 @@ export class AuthController {
     }
   };
 
-  getProfile = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  getProfile = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userId = req.userId as string | undefined;
 

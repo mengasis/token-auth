@@ -1,7 +1,7 @@
 export interface Token {
-    id: string;
-    userId: string;
-    refreshToken: string;
-    expiresAt: string;
-    createdAt: string;
-  }
+  id: string;
+  userId: string;
+  refreshToken: string;
+  expiresAt: string;
+  createdAt: string;
+}

@@ -1,4 +1,4 @@
-import type { NextFunction, Request, Response} from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { UnauthorizedException } from '../utils/exceptions';
 import { verifyAccessToken } from '../utils/jwt';
 

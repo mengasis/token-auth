@@ -18,5 +18,5 @@ export function verifyAccessToken<T>(token: string): T {
 }
 
 export function verifyRefreshToken<T>(token: string): T {
-    return jwt.verify(token, REFRESH_TOKEN_SECRET) as T;
-  }
+  return jwt.verify(token, REFRESH_TOKEN_SECRET) as T;
+}
